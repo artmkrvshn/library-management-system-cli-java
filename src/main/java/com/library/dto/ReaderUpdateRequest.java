@@ -1,10 +1,12 @@
 package com.library.dto;
 
+import lombok.Data;
+
 import java.time.LocalDate;
 
-public record ReaderUpdateRequest(
-        String name,
-        String email,
-        LocalDate birthday
-) {
+@Data
+public final class ReaderUpdateRequest {
+    private final String name;
+    private final String email;
+    private final LocalDate birthday;
 }
