@@ -1,0 +1,19 @@
+services:
+  postgres:
+    image: 'postgres:16.2-alpine3.19'
+    container_name: library-postgres
+    environment:
+      - 'POSTGRES_DB=library'
+      - 'POSTGRES_USER=postgres'
+      - 'POSTGRES_PASSWORD=admin'
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 0.5s
+      retries: 10
+
+volumes:
+  postgres:
