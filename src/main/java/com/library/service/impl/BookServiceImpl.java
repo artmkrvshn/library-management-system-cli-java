@@ -55,9 +55,9 @@ public class BookServiceImpl implements BookService {
     @Override
     public void update(Long id, BookUpdateRequest request) {
         Book book = repository.findBookByIdFetch(id).orElseThrow(() -> new BookNotFoundException(id));
-        if (request.getTitle() != null) book.setTitle(request.getTitle());
-        if (request.getPublished() != null) book.setPublished(request.getPublished());
-        if (request.getAuthor() != null) book.setAuthor(request.getAuthor());
+        if (request.title() != null) book.setTitle(request.title());
+        if (request.published() != null) book.setPublished(request.published());
+        if (request.author() != null) book.setAuthor(request.author());
         repository.save(book);
     }
 

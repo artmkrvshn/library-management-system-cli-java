@@ -50,14 +50,14 @@ public class ReaderServiceImpl implements ReaderService {
     @Override
     public void update(Long id, ReaderUpdateRequest request) {
         Reader reader = repository.findReaderByIdFetch(id).orElseThrow(() -> new ReaderNotFoundException(id));
-        if (request.getName() != null) {
-            reader.setName(request.getName());
+        if (request.name() != null) {
+            reader.setName(request.name());
         }
-        if (request.getEmail() != null) {
-            reader.setEmail(request.getEmail());
+        if (request.email() != null) {
+            reader.setEmail(request.email());
         }
-        if (request.getBirthday() != null) {
-            reader.setBirthday(request.getBirthday());
+        if (request.birthday() != null) {
+            reader.setBirthday(request.birthday());
         }
         repository.save(reader);
     }
